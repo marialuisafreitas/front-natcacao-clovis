@@ -1,0 +1,372 @@
+/* Reset e configurações básicas */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    height: 100vh;
+    display: flex;
+    overflow: hidden;
+}
+
+/* Seção esquerda - Formulário de login */
+#login_form {
+    width: 50%;
+    background-color: #FFFCFC;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    position: relative;
+}
+
+/* Logo */
+#login_form img {
+    width: 200px;
+    height: 110px;
+    margin-bottom: 15px;
+}
+
+/* Título do logo */
+#login_form h1 {
+    font-size: 35px;
+    font-weight: bold;
+    color: #3949AB;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+#login_form p {
+    font-size: 15px;
+    font-weight: bold;
+    color: #504D4D;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* Container dos inputs */
+#login_form div {
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 30px;
+}
+
+#loginInputs {
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 30px;
+}
+
+/* Labels */
+label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #504D4D;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+/* Inputs */
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    background-color: #f0f2f5;
+    font-size: 16px;
+    margin-bottom: 15px;
+    outline: none;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+    background-color: #e8f0fe;
+}
+
+input[type="email"]::placeholder,
+input[type="password"]::placeholder {
+    color: #504D4D;
+}
+
+/* Botão ENTRAR */
+button[type="submit"] {
+    width: 100%;
+    max-width: 200px;
+    padding: 15px;
+    background-color: #00B0FF;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #3949AB;
+}
+
+/* Seção direita - Área aquática */
+#login-image {
+    width: 50%;
+    background: linear-gradient(135deg, #87CEEB 0%, #B0E0E6 100%);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Padrão de azulejos da piscina */
+#login-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(255,255,255,0.1) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, rgba(255,255,255,0.1) 75%),
+        linear-gradient(-45deg, transparent 75%, rgba(255,255,255,0.1) 75%);
+    background-size: 40px 40px;
+    background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+}
+
+/* Ondas de água */
+#login-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at center, rgba(255,255,255,0.2) 0%, transparent 70%);
+    background-size: 100px 50px;
+    animation: wave 3s ease-in-out infinite;
+}
+
+/* Imagem de fundo da piscina */
+#login-image img:first-child {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+/* Animais marinhos */
+#login-image img:last-child {
+    position: relative;
+    z-index: 2;
+    max-width: 80%;
+    height: auto;
+    margin-bottom: 20px;
+    animation: float 2s ease-in-out infinite;
+}
+
+
+@keyframes wave {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+}
+
+/* Responsividade para Tablets */
+@media (max-width: 1024px) and (min-width: 769px) {
+    #login_form {
+        padding: 30px;
+    }
+    
+    #login_form img {
+        width: 150px;
+        height: 80px;
+    }
+    
+    #login_form h1 {
+        font-size: 28px;
+    }
+    
+    #login_form div,
+    #loginInputs {
+        max-width: 280px;
+    }
+}
+
+/* Responsividade para Tablets Pequenos */
+@media (max-width: 768px) and (min-width: 481px) {
+    body {
+        flex-direction: column;
+    }
+    
+    #login_form,
+    #login-image {
+        width: 100%;
+        height: 50vh;
+    }
+    
+    #login_form {
+        padding: 25px;
+    }
+    
+    #login_form img {
+        width: 120px;
+        height: 65px;
+        margin-bottom: 10px;
+    }
+    
+    #login_form h1 {
+        font-size: 24px;
+        margin-bottom: 8px;
+    }
+    
+    #login_form p {
+        font-size: 14px;
+        margin-bottom: 25px;
+    }
+    
+    #login_form div,
+    #loginInputs {
+        max-width: 250px;
+    }
+    
+    input[type="email"],
+    input[type="password"] {
+        padding: 12px;
+        font-size: 14px;
+        margin-bottom: 12px;
+    }
+    
+    button[type="submit"] {
+        max-width: 180px;
+        padding: 12px;
+        font-size: 13px;
+    }
+}
+
+/* Responsividade para Celulares */
+@media (max-width: 480px) {
+    body {
+        flex-direction: column;
+    }
+    
+    #login_form,
+    #login-image {
+        width: 100%;
+        height: 50vh;
+    }
+    
+    #login_form {
+        padding: 20px 15px;
+    }
+    
+    #login_form img {
+        width: 100px;
+        height: 55px;
+        margin-bottom: 8px;
+    }
+    
+    #login_form h1 {
+        font-size: 20px;
+        margin-bottom: 6px;
+    }
+    
+    #login_form p {
+        font-size: 13px;
+        margin-bottom: 20px;
+    }
+    
+    #login_form div,
+    #loginInputs {
+        max-width: 200px;
+    }
+    
+    label {
+        font-size: 12px;
+        margin-bottom: 6px;
+    }
+    
+    input[type="email"],
+    input[type="password"] {
+        padding: 10px;
+        font-size: 13px;
+        margin-bottom: 10px;
+        border-radius: 6px;
+    }
+    
+    button[type="submit"] {
+        max-width: 160px;
+        padding: 10px;
+        font-size: 12px;
+        border-radius: 6px;
+    }
+    
+    /* Ajustar animações para dispositivos móveis */
+    #login-image::after {
+        animation: none; /* Desabilitar animação de ondas em mobile para melhor performance */
+    }
+    
+    #login-image img:last-child {
+        animation: none; /* Desabilitar animação de flutuação em mobile */
+        max-width: 70%;
+    }
+}
+
+/* Orientação Landscape para celulares */
+@media (max-width: 768px) and (orientation: landscape) {
+    #login_form,
+    #login-image {
+        height: 100vh;
+    }
+    
+    #login_form {
+        padding: 15px;
+    }
+    
+    #login_form img {
+        width: 80px;
+        height: 45px;
+        margin-bottom: 5px;
+    }
+    
+    #login_form h1 {
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+    
+    #login_form p {
+        font-size: 12px;
+        margin-bottom: 15px;
+    }
+    
+    #login_form div,
+    #loginInputs {
+        max-width: 180px;
+    }
+    
+    input[type="email"],
+    input[type="password"] {
+        padding: 8px;
+        font-size: 12px;
+        margin-bottom: 8px;
+    }
+    
+    button[type="submit"] {
+        max-width: 140px;
+        padding: 8px;
+        font-size: 11px;
+    }
+}
