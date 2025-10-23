@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuários do Sistema | Natação Clóvis</title>
+    <link rel="stylesheet" href="usuariosSitema.css">
+    <script src="usuarioSistema.js"></script>
+</head>
+
+<body>
+    <div id="sidebar">
+        <h1>Olá, Fulano</h1>
+        <div>
+            <a href="#">Alunos</a>
+            <a href="#">Aprovação de Progresso</a>
+            <a href="#">Fases</a>
+            <a href="#">Turmas</a>
+            <a href="#">Unidades</a>
+            <a href="#">Usuários do Sistema</a>
+            <button id="sair">Sair</button>
+        </div>
+        <img src="../images/logoSemFundo.png" alt="Logo da Metodologia Clóvis">
+    </div>
+    <div id="informacoes">
+        <div id="tituloBusca">
+            <h1>Usuários do sistema</h1>
+            <div>
+                <button id="btnAdicionar">+ Adicionar novo</button>
+                <input type="search" name="pesquisaUruarios" id="pesquisaUruarios" placeholder="Buscar por usuários...">
+            </div>
+        </div>
+        <div id="tabelaUsuarios">
+            <div id="dadosTabela">
+                <p id="nomeUsuario">Maria Clara Alves de Almeida</p>
+                <p id="statusUsuario">Administrador</p>
+            </div>
+            <div id="editarUsuarios">
+                <button id="editar"
+                    data-user='{"nome":"Maria Clara Alves de Almeida","email":"maria@email.com","nivel":"Administrador"}'>Editar</button>
+                <button id="excluir">Excluir</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para Adicionar/Editar Usuário -->
+    <div id="modalUsuario" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitulo">Adicionar Usuário</h2>
+            </div>
+            <form id="formUsuario">
+                <div class="form-group">
+                    <label for="nomeCompleto">Nome Completo</label>
+                    <input type="text" id="nomeCompleto" name="nomeCompleto" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="nivelAcesso">Nível de acesso</label>
+                    <select id="nivelAcesso" name="nivelAcesso" required>
+                        <option value="">Selecione o nível</option>
+                        <option value="Administrador">Administrador</option>
+                        <option value="Professor">Professor</option>
+                        <option value="Secretaria">Secretaria</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="senha">Senha</label>
+                        <div class="password-input">
+                            <input type="password" id="senha" name="senha" required>
+                            <span class="toggle-password" data-target="senha"><img src="../images/hidden.png"
+                                    alt="olho fechado"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmarSenha">Confirmar senha</label>
+                        <div class="password-input">
+                            <input type="password" id="confirmarSenha" name="confirmarSenha" required>
+                            <span class="toggle-password" data-target="confirmarSenha"><img src="../images/hidden.png"
+                                    alt="olho fechado"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-cancelar">Cancelar</button>
+                    <button type="submit" class="btn-salvar">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
