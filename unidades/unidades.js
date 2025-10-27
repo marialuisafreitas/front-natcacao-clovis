@@ -15,7 +15,7 @@ function abrirModalAdicionar() {
     isEditMode = false;
     modalTitulo.textContent = 'Adicionar Unidade';
     formUnidade.reset();
-    modal.style.display = 'block';
+    modal.style.display = 'flex';
     document.body.style.overflow = 'hidden';
 }
 
@@ -28,7 +28,7 @@ function abrirModalEditar(unitData) {
     document.getElementById('nomeUnidade').value = unitData.nome || '';
     document.getElementById('cep').value = unitData.cep || '';
 
-    modal.style.display = 'block';
+    modal.style.display = 'flex';
     document.body.style.overflow = 'hidden';
 }
 

@@ -292,13 +292,14 @@ body {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(240, 240, 240, 0.8);
+    background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(2px);
+    justify-content: center;
+    align-items: center;
 }
 
 .modal-content {
-    background-color: #FFFFFF;
-    margin: 8% auto;
+    background-color: #EAF0F4;
     padding: 40px;
     border-radius: 10px;
     width: 100%;
@@ -377,36 +378,6 @@ body {
 
 
 /* Modal Actions */
-#modalUnidade {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 100;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(2px);
-}
-
-.modal-content {
-    background-color: #EAF0F4;
-    margin: 5% auto;
-    padding-left: 30px;
-    padding-right: 30px;
-    border-radius: 6px;
-    width: 100%;
-    max-width: 600px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    animation: modalSlideIn 0.3s ease-out;
-}
-
 .modal-actions {
     display: flex;
     gap: 15px;
@@ -450,9 +421,10 @@ body {
 /* Responsive Modal */
 @media (max-width: 768px) {
     .modal-content {
-        margin: 10% auto;
         width: 95%;
         padding: 30px;
+        max-height: 90vh;
+        overflow-y: auto;
     }
 
     .modal-header h2 {
@@ -481,9 +453,9 @@ body {
 
 @media (max-width: 480px) {
     .modal-content {
-        margin: 5% auto;
         width: 95%;
         padding: 20px;
+        max-height: 90vh;
     }
 
     .modal-header h2 {
