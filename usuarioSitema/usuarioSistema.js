@@ -15,7 +15,7 @@ function abrirModalAdicionar() {
     isEditMode = false;
     modalTitulo.textContent = 'Adicionar Usuário';
     formUsuario.reset();
-    modal.style.display = 'block';
+    modal.style.display = 'flex';
     document.body.style.overflow = 'hidden';
 }
 
@@ -31,15 +31,24 @@ function abrirModalEditar(userData) {
     document.getElementById('senha').value = '';
     document.getElementById('confirmarSenha').value = '';
 
-    modal.style.display = 'block';
+    modal.style.display = 'flex';
     document.body.style.overflow = 'hidden';
 }
 
 // Fechar modal
 function fecharModal() {
-    modal.style.display = 'none';
-    document.body.style.overflow = 'auto';
-    formUsuario.reset();
+    const modalContent = modal.querySelector('.modal-content');
+    
+    // Adicionar classe de animação de fechamento
+    modalContent.classList.add('fechar');
+    
+    // Aguardar a animação terminar (300ms) antes de esconder o modal
+    setTimeout(() => {
+        modal.style.display = 'none';
+        modalContent.classList.remove('fechar');
+        document.body.style.overflow = 'auto';
+        formUsuario.reset();
+    }, 300);
 }
 
 // Event listeners

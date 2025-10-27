@@ -34,9 +34,18 @@ function abrirModalEditar(unitData) {
 
 // Fechar modal
 function fecharModal() {
-    modal.style.display = 'none';
-    document.body.style.overflow = 'auto';
-    formUnidade.reset();
+    const modalContent = modal.querySelector('.modal-content');
+    
+    // Adicionar classe de animação de fechamento
+    modalContent.classList.add('fechar');
+    
+    // Aguardar a animação terminar (300ms) antes de esconder o modal
+    setTimeout(() => {
+        modal.style.display = 'none';
+        modalContent.classList.remove('fechar');
+        document.body.style.overflow = 'auto';
+        formUnidade.reset();
+    }, 300);
 }
 
 // Event listeners
