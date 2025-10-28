@@ -5,39 +5,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Usuários do Sistema | Natação Clóvis</title>
-    <link rel="stylesheet" href="usuarioSitema.css">
+    <link rel="stylesheet" href="../styles/style.css">
 </head>
 <body>
-    <div id="sidebar">
+    <div class="sidebar">
         <h1>Olá, Fulano</h1>
         <div>
             <a href="#">Alunos</a>
             <a href="#">Aprovação de Progresso</a>
             <a href="#">Fases</a>
-            <a href="../turmas/turmas.html">Turmas</a>
-            <a href="../unidades/unidades.html">Unidades</a>
-            <a href="../usuarioSitema/usuarioSistema.html">Usuários do Sistema</a>
-            <button id="sair">Sair</button>
+            <a href="turmas.html">Turmas</a>
+            <a href="unidades.html">Unidades</a>
+            <a href="usuarioSistema.html">Usuários do Sistema</a>
+            <button class="btn-logout">Sair</button>
         </div>
-        <img src="../images/logoSemFundo.png" alt="Logo da Metodologia Clóvis">
+        <img src="../img/logoSemFundo.png" alt="Logo da Metodologia Clóvis">
     </div>
-    <div id="informacoes">
-        <div id="tituloBusca">
+    <div class="main-content">
+        <div class="page-header">
             <h1>Usuários do sistema</h1>
-            <div>
-                <button id="btnAdicionar">+ Adicionar novo</button>
-                <input type="search" name="pesquisaUruarios" id="pesquisaUruarios" placeholder="Buscar por usuários...">
+            <div class="actions">
+                <button class="btn-primary" id="btnAdicionar">+ Adicionar novo</button>
+                <input type="search" name="pesquisaUsuarios" id="pesquisaUsuarios" class="input-search" placeholder="Buscar por usuários...">
             </div>
         </div>
-        <div id="tabelaUsuarios">
-            <div id="dadosTabela">
-                <p id="nomeUsuario">Maria Clara Alves de Almeida</p>
-                <p id="statusUsuario">Administrador</p>
+        <div class="table-row">
+            <div class="table-data">
+                <p class="table-row-title">Maria Clara Alves de Almeida</p>
+                <p class="table-badge">Administrador</p>
             </div>
-            <div id="editarUsuarios">
-                <button id="editar"
-                    data-user='{"nome":"Maria Clara Alves de Almeida","email":"maria@email.com","nivel":"Administrador"}'>Editar</button>
-                <button id="excluir">Excluir</button>
+            <div class="table-actions">
+                <button class="btn-edit" data-user='{"nome":"Maria Clara Alves de Almeida","email":"maria@email.com","nivel":"Administrador"}'>Editar</button>
+                <button class="btn-delete">Excluir</button>
             </div>
         </div>
     </div>
@@ -48,51 +47,53 @@
             <div class="modal-header">
                 <h2 id="modalTitulo">Adicionar Usuário</h2>
             </div>
-            <form id="formUsuario">
-                <div class="form-group">
-                    <label for="nomeCompleto">Nome Completo</label>
-                    <input type="text" id="nomeCompleto" name="nomeCompleto" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">E-mail</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="nivelAcesso">Nível de acesso</label>
-                    <select id="nivelAcesso" name="nivelAcesso" required>
-                        <option value="">Selecione o nível</option>
-                        <option value="Administrador">Administrador</option>
-                        <option value="Professor">Professor</option>
-                        <option value="Secretaria">Secretaria</option>
-                    </select>
-                </div>
-                <div class="form-row">
+            <div class="form-content">
+                <form id="formUsuario">
                     <div class="form-group">
-                        <label for="senha">Senha</label>
-                        <div class="password-input">
-                            <input type="password" id="senha" name="senha" required>
-                            <span class="toggle-password" data-target="senha"><img src="../images/hidden.png"
-                                    alt="olho fechado"></span>
-                        </div>
+                        <label for="nomeCompleto">Nome Completo</label>
+                        <input type="text" id="nomeCompleto" name="nomeCompleto" required>
                     </div>
                     <div class="form-group">
-                        <label for="confirmarSenha">Confirmar senha</label>
-                        <div class="password-input">
-                            <input type="password" id="confirmarSenha" name="confirmarSenha" required>
-                            <span class="toggle-password" data-target="confirmarSenha"><img src="../images/hidden.png"
-                                    alt="olho fechado"></span>
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="nivelAcesso">Nível de acesso</label>
+                        <select id="nivelAcesso" name="nivelAcesso" required>
+                            <option value="">Selecione o nível</option>
+                            <option value="Administrador">Administrador</option>
+                            <option value="Professor">Professor</option>
+                            <option value="Secretaria">Secretaria</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="senha">Senha</label>
+                            <div class="password-input">
+                                <input type="password" id="senha" name="senha" required>
+                                <span class="toggle-password" data-target="senha"><img src="../img/hidden.png"
+                                        alt="olho fechado"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmarSenha">Confirmar senha</label>
+                            <div class="password-input">
+                                <input type="password" id="confirmarSenha" name="confirmarSenha" required>
+                                <span class="toggle-password" data-target="confirmarSenha"><img src="../img/hidden.png"
+                                        alt="olho fechado"></span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="modal-actions">
-                    <button type="button" class="btn-cancelar">Cancelar</button>
-                    <button type="submit" class="btn-salvar">Salvar</button>
-                </div>
-            </form>
+                    <div class="modal-actions">
+                        <button type="button" class="btn-cancel">Cancelar</button>
+                        <button type="submit" class="btn-save">Salvar</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 
-<script src="usuarioSistema.js"></script>
+<script src="../js/usuarioSistema.js"></script>
 </body>
 
 </html>

@@ -6,9 +6,9 @@ let isEditMode = false;
 let currentUnitId = null;
 
 // Elementos do modal
-const cancelBtn = document.querySelector('.btn-cancelar');
+const cancelBtn = document.querySelector('.btn-cancel');
 const addBtn = document.getElementById('btnAdicionar');
-const editBtns = document.querySelectorAll('#editarUnidade button#editar');
+const editBtns = document.querySelectorAll('.table-actions .btn-edit');
 
 // Abrir modal para adicionar unidade
 function abrirModalAdicionar() {
@@ -37,12 +37,12 @@ function fecharModal() {
     const modalContent = modal.querySelector('.modal-content');
     
     // Adicionar classe de animação de fechamento
-    modalContent.classList.add('fechar');
+    modalContent.classList.add('close');
     
     // Aguardar a animação terminar (300ms) antes de esconder o modal
     setTimeout(() => {
         modal.style.display = 'none';
-        modalContent.classList.remove('fechar');
+        modalContent.classList.remove('close');
         document.body.style.overflow = 'auto';
         formUnidade.reset();
     }, 300);

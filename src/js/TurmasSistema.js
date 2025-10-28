@@ -6,17 +6,17 @@ let isEditMode = false;
 let currentTurmaId = null;
 
 // Elementos do modal
-const cancelBtn = document.querySelector('.btn-cancelar');
+const cancelBtn = document.querySelector('.btn-cancel');
 const addBtn = document.getElementById('btnAdicionar');
-const editBtns = document.querySelectorAll('#editarTurmas button#editar');
-const deleteBtns = document.querySelectorAll('#editarTurmas button#excluir');
+const editBtns = document.querySelectorAll('.table-actions .btn-edit');
+const deleteBtns = document.querySelectorAll('.table-actions .btn-delete');
 
 // Abrir modal para adicionar turma
 function abrirModalAdicionar() {
     isEditMode = false;
     modalTitulo.textContent = 'Adicionar Turma';
     formTurmas.reset();
-    modal.classList.add('mostrar');
+    modal.classList.add('show');
     document.body.style.overflow = 'hidden';
 }
 
@@ -49,7 +49,7 @@ function abrirModalEditar(turmaData) {
         if (turmaData.professor === 'Professor 3') document.getElementById('professor3').checked = true;
     }
 
-    modal.classList.add('mostrar');
+    modal.classList.add('show');
     document.body.style.overflow = 'hidden';
 }
 
@@ -58,12 +58,12 @@ function fecharModal() {
     const modalContent = modal.querySelector('.modal-content');
     
     // Adicionar classe de animação de fechamento
-    modalContent.classList.add('fechar');
+    modalContent.classList.add('close');
     
     // Aguardar a animação terminar (300ms) antes de esconder o modal
     setTimeout(() => {
-        modal.classList.remove('mostrar');
-        modalContent.classList.remove('fechar');
+        modal.classList.remove('show');
+        modalContent.classList.remove('close');
         document.body.style.overflow = 'auto';
         formTurmas.reset();
         isEditMode = false;

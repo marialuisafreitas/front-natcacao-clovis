@@ -1,3 +1,8 @@
+/* ============================================
+   CSS GLOBAL - Sistema Natação Clóvis
+   ============================================ */
+
+/* Reset e configurações básicas */
 * {
     margin: 0;
     padding: 0;
@@ -13,33 +18,36 @@ body {
     padding: 2%;
 }
 
-/* Sidebar */
-#sidebar {
+/* ============================================
+   SIDEBAR (Menu Lateral)
+   ============================================ */
+
+.sidebar {
     width: 300px;
     background-color: #1EB9FE;
     display: flex;
     flex-direction: column;
-    min-height: 9 0vh;
+    min-height: 90vh;
     border-radius: 15px;
     padding-left: 50px;
     padding-right: 50px;
     padding-top: 50px;
 }
 
-#sidebar h1 {
+.sidebar h1 {
     color: white;
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 40px;
 }
 
-#sidebar>div:first-of-type {
+.sidebar > div:first-of-type {
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
-#sidebar a {
+.sidebar a {
     color: white;
     text-decoration: none;
     padding: 12px 16px;
@@ -48,12 +56,12 @@ body {
     font-size: 16px;
 }
 
-#sidebar a:hover {
+.sidebar a:hover {
     background-color: #B7E8FF;
     color: #3949AB;
 }
 
-#sair {
+.btn-logout {
     background-color: transparent;
     color: white;
     border: none;
@@ -65,12 +73,12 @@ body {
     transition: background-color 0.3s ease;
 }
 
-#sair:hover {
+.btn-logout:hover {
     background-color: #B7E8FF;
     color: #3949AB;
 }
 
-#sidebar img {
+.sidebar img {
     width: 100%;
     max-width: 150px;
     margin-top: 40px;
@@ -78,14 +86,20 @@ body {
     margin-left: 20px;
 }
 
-/* Área principal de conteúdo */
-#informacoes {
+/* ============================================
+   ÁREA DE CONTEÚDO PRINCIPAL
+   ============================================ */
+
+.main-content {
     flex: 1;
     padding: 30px;
 }
 
-/* Header com título e controles */
-#tituloBusca {
+/* ============================================
+   HEADER (Título e Busca)
+   ============================================ */
+
+.page-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -94,19 +108,19 @@ body {
     gap: 20px;
 }
 
-#tituloBusca h1 {
+.page-header h1 {
     font-size: 32px;
     font-weight: bold;
     color: #333333;
 }
 
-#tituloBusca>div {
+.page-header .actions {
     display: flex;
     gap: 15px;
     align-items: center;
 }
 
-#tituloBusca button {
+.btn-primary {
     background-color: #00B0FF;
     color: white;
     border: none;
@@ -118,26 +132,29 @@ body {
     transition: background-color 0.3s ease;
 }
 
-#tituloBusca button:hover {
+.btn-primary:hover {
     background-color: #07a2e9;
 }
 
-#pesquisaTurmas {
+.input-search {
     padding: 12px 16px;
     border: none;
-    background-color: rgb(240, 242, 245);
+    background-color: #f0f2f5;
     border-radius: 8px;
     font-size: 16px;
     width: 300px;
     outline: none;
 }
 
-#pesquisaTurmas::placeholder {
+.input-search::placeholder {
     color: #9E9E9E;
 }
 
-/* Tabela de usuários */
-#tabelaTurmas {
+/* ============================================
+   TABELA/DADOS
+   ============================================ */
+
+.table-row {
     border-radius: 8px;
     margin-bottom: 15px;
     display: flex;
@@ -145,24 +162,24 @@ body {
     justify-content: space-between;
 }
 
-#dadosTabela {
+.table-data {
     flex: 1;
     display: flex;
     align-items: center;
-    background-color: rgb(240, 242, 245);
+    background-color: #f0f2f5;
     padding: 10px;
     border-radius: 6px;
     padding-left: 18px;
 }
 
-#nomeTurma {
+.table-row-title {
     flex: 1;
     font-size: 16px;
     color: #333333;
     font-weight: 500;
 }
 
-#nomeUnidade {
+.table-badge {
     background-color: #00B0FF;
     color: white;
     padding: 6px 12px;
@@ -172,13 +189,16 @@ body {
     margin-right: 10px;
 }
 
-/* Botões de ação */
-#editarTurmas {
+.table-actions {
     display: flex;
     gap: 10px;
 }
 
-#editar {
+/* ============================================
+   BOTÕES DE AÇÃO
+   ============================================ */
+
+.btn-edit {
     background-color: #3949AB;
     color: white;
     border: none;
@@ -189,11 +209,11 @@ body {
     transition: background-color 0.3s ease;
 }
 
-#editar:hover {
+.btn-edit:hover {
     background-color: #08386f;
 }
 
-#excluir {
+.btn-delete {
     background-color: #AB3943;
     color: white;
     border: none;
@@ -204,85 +224,14 @@ body {
     transition: background-color 0.3s ease;
 }
 
-#excluir:hover {
+.btn-delete:hover {
     background-color: #6c292f;
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
-    body {
-        flex-direction: column;
-    }
+/* ============================================
+   MODAL
+   ============================================ */
 
-    #sidebar {
-        width: 100%;
-        min-height: auto;
-        padding: 20px;
-    }
-
-    #sidebar>div:first-of-type {
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 10px;
-    }
-
-    #sidebar a,
-    #sair {
-        padding: 8px 12px;
-        font-size: 14px;
-    }
-
-    #tituloBusca {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    #tituloBusca>div {
-        width: 100%;
-        justify-content: space-between;
-    }
-
-    #pesquisaTurmas {
-        width: 100%;
-        max-width: 300px;
-    }
-
-    #tabelaTurmas {
-        flex-direction: column;
-        gap: 15px;
-        align-items: flex-start;
-    }
-
-    #editarTurmas {
-        width: 100%;
-        justify-content: flex-end;
-    }
-}
-
-@media (max-width: 480px) {
-    #informacoes {
-        padding: 20px;
-    }
-
-    #tituloBusca h1 {
-        font-size: 24px;
-    }
-
-    #tituloBusca>div {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    #tituloBusca button {
-        width: 100%;
-    }
-
-    #pesquisaTurmas {
-        width: 100%;
-    }
-}
-
-/* Modal Styles */
 .modal {
     display: none;
     position: fixed;
@@ -297,7 +246,7 @@ body {
     align-items: center;
 }
 
-.modal.mostrar {
+.modal.show {
     display: flex;
 }
 
@@ -316,7 +265,6 @@ body {
         opacity: 0;
         transform: translateY(-50px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
@@ -328,14 +276,13 @@ body {
         opacity: 1;
         transform: translateY(0);
     }
-
     to {
         opacity: 0;
         transform: translateY(-50px);
     }
 }
 
-.modal-content.fechar {
+.modal-content.close {
     animation: modalSlideOut 0.3s ease-out;
 }
 
@@ -355,8 +302,11 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Form Styles */
-#formTurmas {
+/* ============================================
+   FORMULÁRIO
+   ============================================ */
+
+.form-content {
     padding: 30px;
 }
 
@@ -394,29 +344,6 @@ body {
     cursor: pointer;
 }
 
-.opcaoProfessor {
-    display: flex;
-    align-items: center;
-    padding: 8px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-    border-radius: 4px;
-}
-
-.opcaoProfessor:hover {
-    background-color: rgba(232, 230, 230, 0.3);
-}
-
-.opcaoProfessor label {
-    display: inline-flex;
-    align-items: center;
-    font-weight: normal;
-    margin-bottom: 0;
-    cursor: pointer;
-    margin-left: 8px;
-    font-size: 16px;
-}
-
 .form-row {
     display: flex;
     gap: 15px;
@@ -426,7 +353,83 @@ body {
     flex: 1;
 }
 
-/* Modal Actions */
+/* Input de opção (ex: lista de professores) */
+.option-item {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    border-radius: 4px;
+}
+
+.option-item:hover {
+    background-color: rgba(232, 230, 230, 0.3);
+}
+
+.option-item label {
+    display: inline-flex;
+    align-items: center;
+    font-weight: normal;
+    margin-bottom: 0;
+    cursor: pointer;
+    margin-left: 8px;
+    font-size: 16px;
+}
+
+/* Container de opções */
+.options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    background-color: #FFFFFF;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.options-container p {
+    display: block;
+    font-weight: 500;
+    color: #000000;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+/* Password input com toggle */
+.password-input {
+    position: relative;
+}
+
+.password-input input {
+    padding-right: 45px;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
+    user-select: none;
+    transition: opacity 0.3s ease;
+}
+
+.toggle-password:hover {
+    opacity: 0.7;
+}
+
+.toggle-password img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+/* ============================================
+   BOTÕES DO MODAL
+   ============================================ */
+
 .modal-actions {
     display: flex;
     gap: 15px;
@@ -435,7 +438,7 @@ body {
     padding-bottom: 20px;
 }
 
-.btn-cancelar {
+.btn-cancel {
     background-color: #ffffff;
     color: #000000;
     border: 0px solid #000000;
@@ -447,12 +450,12 @@ body {
     transition: all 0.3s ease;
 }
 
-.btn-cancelar:hover {
+.btn-cancel:hover {
     background-color: #f5f5f5;
     border-color: #bbb;
 }
 
-.btn-salvar {
+.btn-save {
     background-color: #155A92;
     color: white;
     border: none;
@@ -464,30 +467,68 @@ body {
     transition: background-color 0.3s ease;
 }
 
-.btn-salvar:hover {
+.btn-save:hover {
     background-color: #0d385b;
 }
 
-#selecaoProfessor {
-    display: block;
-    font-weight: 500;
-    color: #000000;
-    font-size: 14px;
-    margin-bottom: 10px;
+/* Campo CEP com largura menor */
+.input-cep {
+    max-width: 200px;
 }
 
-#professores {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    background-color: #FFFFFF;
-    padding: 10px;
-    border-radius: 8px;
-    margin-bottom: 10px;
-}
+/* ============================================
+   RESPONSIVIDADE - TABLET
+   ============================================ */
 
-/* Responsive Modal */
 @media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        min-height: auto;
+        padding: 20px;
+    }
+
+    .sidebar > div:first-of-type {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .sidebar a,
+    .btn-logout {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .page-header .actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .input-search {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .table-row {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+
+    .table-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
     .modal-content {
         margin: 10% auto;
         width: 95%;
@@ -497,7 +538,7 @@ body {
         padding: 20px;
     }
 
-    #formTurmas {
+    .form-content {
         padding: 20px;
     }
 
@@ -510,13 +551,42 @@ body {
         flex-direction: column;
     }
 
-    .btn-cancelar,
-    .btn-salvar {
+    .btn-cancel,
+    .btn-save {
         width: 100%;
+    }
+
+    .input-cep {
+        max-width: 100%;
     }
 }
 
+/* ============================================
+   RESPONSIVIDADE - MOBILE
+   ============================================ */
+
 @media (max-width: 480px) {
+    .main-content {
+        padding: 20px;
+    }
+
+    .page-header h1 {
+        font-size: 24px;
+    }
+
+    .page-header .actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn-primary {
+        width: 100%;
+    }
+
+    .input-search {
+        width: 100%;
+    }
+
     .modal-content {
         margin: 5% auto;
         width: 98%;
@@ -526,3 +596,5 @@ body {
         font-size: 20px;
     }
 }
+
+

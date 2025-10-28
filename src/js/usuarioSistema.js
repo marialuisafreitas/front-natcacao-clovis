@@ -6,9 +6,10 @@ let isEditMode = false;
 let currentUserId = null;
 
 // Elementos do modal
-const cancelBtn = document.querySelector('.btn-cancelar');
-const addBtn = document.querySelector('button[onclick*="Adicionar"]') || document.querySelector('button');
-const editBtns = document.querySelectorAll('#tabelaUsuarios button#editar');
+const cancelBtn = document.querySelector('.btn-cancel');
+const addBtn = document.getElementById('btnAdicionar');
+const editBtns = document.querySelectorAll('.table-actions .btn-edit');
+const deleteBtns = document.querySelectorAll('.table-actions .btn-delete');
 
 // Abrir modal para adicionar usuário
 function abrirModalAdicionar() {
@@ -40,12 +41,12 @@ function fecharModal() {
     const modalContent = modal.querySelector('.modal-content');
     
     // Adicionar classe de animação de fechamento
-    modalContent.classList.add('fechar');
+    modalContent.classList.add('close');
     
     // Aguardar a animação terminar (300ms) antes de esconder o modal
     setTimeout(() => {
         modal.style.display = 'none';
-        modalContent.classList.remove('fechar');
+        modalContent.classList.remove('close');
         document.body.style.overflow = 'auto';
         formUsuario.reset();
     }, 300);
@@ -67,15 +68,26 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+        // Botões excluir
+    deleteBtns.forEach(btn => {
+        btn.addEventListener('click', function () {
+            excluirUsuario();
+        });
+    });
+
     // Fechar modal
-    cancelBtn.addEventListener('click', fecharModal);
+    if (cancelBtn) {
+        cancelBtn.addEventListener('click', fecharModal);
+    }
 
     // Fechar modal clicando fora dele
-    window.addEventListener('click', function (event) {
-        if (event.target === modal) {
-            fecharModal();
-        }
-    });
+    if (modal) {
+        window.addEventListener('click', function (event) {
+            if (event.target === modal) {
+                fecharModal();
+            }
+        });
+    }
 
     // Toggle password visibility
     document.querySelectorAll('.toggle-password').forEach(toggle => {
@@ -86,13 +98,57 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (input.type === 'password') {
                 input.type = 'text';
-                img.src = '../images/view.png';
+                img.src = '../img/view.png';
                 img.alt = 'olho aberto';
             } else {
                 input.type = 'password';
-                img.src = '../images/hidden.png';
+                img.src = '../img/hidden.png';
                 img.alt = 'olho fechado';
             }
         });
     });
+
+    // Submeter formulário
+    if (formUsuario) {
+        formUsuario.addEventListener('submit', function (e) {
+            e.preventDefault();
+            
+            const nomeCompleto = document.getElementById('nomeCompleto').value;
+            const email = document.getElementById('email').value;
+            const nivelAcesso = document.getElementById('nivelAcesso').value;
+            const senha = document.getElementById('senha').value;
+            const confirmarSenha = document.getElementById('confirmarSenha').value;
+            
+            // Validar senhas
+            if (senha !== confirmarSenha) {
+                alert('As senhas não coincidem!');
+                return;
+            }
+            
+            const userData = {
+                nome: nomeCompleto,
+                email: email,
+                nivel: nivelAcesso
+            };
+            
+            if (isEditMode) {
+                console.log('Editando usuário:', userData);
+                alert('Usuário atualizado com sucesso!');
+            } else {
+                console.log('Adicionando usuário:', userData);
+                alert('Usuário adicionado com sucesso!');
+            }
+            
+            // Fechar modal após salvar
+            fecharModal();
+        });
+    }
 });
+
+// Função para excluir usuário
+function excluirUsuario() {
+    if (confirm('Tem certeza que deseja excluir este usuário?')) {
+        console.log('Excluindo usuário...');
+        alert('Usuário excluído com sucesso!');
+    }
+}
