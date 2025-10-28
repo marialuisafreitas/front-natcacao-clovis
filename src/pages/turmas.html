@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuários do Sistema | Natação Clóvis</title>
+    <link rel="stylesheet" href="turmas.css">
+</head>
+
+<body>
+    <div id="sidebar">
+        <h1>Olá, Fulano</h1>
+        <div>
+            <a href="#">Alunos</a>
+            <a href="#">Aprovação de Progresso</a>
+            <a href="#">Fases</a>
+            <a href="../turmas/turmas.html">Turmas</a>
+            <a href="../unidades/unidades.html">Unidades</a>
+            <a href="../usuarioSitema/usuarioSistema.html">Usuários do Sistema</a>
+            <button id="sair">Sair</button>
+        </div>
+        <img src="../images/logoSemFundo.png" alt="Logo da Metodologia Clóvis">
+    </div>
+    <div id="informacoes">
+        <div id="tituloBusca">
+            <h1>Turmas</h1>
+            <div>
+                <button id="btnAdicionar">+ Adicionar novo</button>
+                <input type="search" name="pesquisaTurmas" id="pesquisaTurmas" placeholder="Buscar por turmas...">
+            </div>
+        </div>
+        <div id="tabelaTurmas">
+            <div id="dadosTabela">
+                <p id="nomeTurma">2ª e 4ª | 9h30 - 7 a 12</p>
+                <p id="nomeUnidade">Unidade Selles</p>
+            </div>
+            <div id="editarTurmas">
+                <button id="editar">Editar</button>
+                <button id="excluir">Excluir</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalTurmas" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitulo">Adicionar Turma</h2>
+            </div>
+            <form id="formTurmas">
+                <div class="form-group">
+                    <label for="turma">Turma</label>
+                    <input type="text" id="turma" name="turma" required>
+                </div>
+                <div class="form-group">
+                    <label for="unidade">Unidade</label>
+                    <select id="unidade" name="unidade" required>
+                        <option value="">Selecione a unidade</option>
+                        <option value="Unidade Selles">Unidade Selles</option>
+                        <option value="Unidade Lorena">Unidade Lorena</option>
+                        <option value="Unidade Portal">Unidade Portal</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <p id="selecaoProfessor">Selecione o(s) professor(es) responsáveis:</p>
+                    <div id="professores">
+                        <div class="opcaoProfessor">
+                            <input type="checkbox" id="professor1" name="professor" value="Professor 1">
+                            <label for="professor1">Professor 1</label>
+                        </div>
+                        <div class="opcaoProfessor">
+                            <input type="checkbox" id="professor2" name="professor" value="Professor 2">
+                            <label for="professor2">Professor 2</label>
+                        </div>
+                        <div class="opcaoProfessor">
+                            <input type="checkbox" id="professor3" name="professor" value="Professor 3">
+                            <label for="professor3">Professor 3</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-cancelar">Cancelar</button>
+                    <button type="submit" class="btn-salvar">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="TurmasSistema.js"></script>
+</body>
+
+</html>
