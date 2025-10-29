@@ -1,0 +1,29 @@
+{
+  "name": "front-natcacao-clovis",
+  "version": "1.0.0",
+  "description": "Sistema de gerenciamento para escolas de natação que utilizam a Metodologia Clóvis",
+  "main": "src/pages/login.html",
+  "scripts": {
+    "start": "http-server src -p 8080 -c-1",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marialuisafreitas/front-natcacao-clovis.git"
+  },
+  "keywords": [
+    "natacao",
+    "metodologia-clovis",
+    "escola-natacao",
+    "gerenciamento"
+  ],
+  "author": "Maria Luisa Freitas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/marialuisafreitas/front-natcacao-clovis/issues"
+  },
+  "homepage": "https://github.com/marialuisafreitas/front-natcacao-clovis#readme",
+  "devDependencies": {
+    "serve": "^14.0.0"
+  }
+}

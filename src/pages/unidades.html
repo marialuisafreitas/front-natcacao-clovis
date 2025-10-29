@@ -30,14 +30,11 @@
                 <input type="search" name="pesquisarUnidades" id="pesquisarUnidades" class="input-search" placeholder="Buscar por unidade...">
             </div>
         </div>
-        <div class="table-row">
-            <div class="table-data">
-                <p class="table-row-title">Unidade Portal</p>
-            </div>
-            <div class="table-actions">
-                <button class="btn-edit" data-user='{"nome":"Unidade Portal","cep":"12000000"}'>Editar</button>
-                <button class="btn-delete">Excluir</button>
-            </div>
+        <div id="unidadesContainer">
+            <!-- Lista de unidades será renderizada aqui -->
+        </div>
+        <div id="paginationContainer">
+            <!-- Controles de paginação serão renderizados aqui -->
         </div>
     </div>
 
@@ -66,6 +63,8 @@
         </div>
     </div>
 
+    <script src="../js/auth.js"></script>
+    <script src="../js/utils/pagination.js"></script>
     <script src="../js/unidades.js"></script>
 </body>
 
