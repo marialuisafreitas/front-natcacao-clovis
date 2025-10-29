@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fases | Natação Clóvis</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"/>
+</head>
+
+<body>
+    <div class="sidebar">
+        <h1>Olá, Fulano</h1>
+        <div>
+            <a href="#">Alunos</a>
+            <a href="#">Aprovação de Progresso</a>
+            <a href="fases.html">Fases</a>
+            <a href="turmas.html">Turmas</a>
+            <a href="unidades.html">Unidade</a>
+            <a href="usuarioSistema.html">Usuários do Sistema</a>
+            <button class="btn-logout">Sair</button>
+        </div>
+        <img src="../img/logoSemFundo.png" alt="Logo da Metodologia Clóvis">
+    </div>
+    <div class="main-content">
+        <div class="page-header">
+            <h1>Fases</h1>
+            <div class="actions">
+                <button class="btn-primary" id="btnAdicionar">+ Adicionar novo</button>
+                <input type="search" name="pesquisarFases" id="pesquisarFases" class="input-search"
+                    placeholder="Buscar por fase...">
+            </div>
+        </div>
+        <div class="table-row">
+            <div class="table-data">
+                <p class="table-row-title">Golfinho Baby</p>
+            </div>
+            <div class="table-actions">
+                <button class="btn-edit" data-user='{"nome":"Fase Portal","cep":"12000000"}'>Editar</button>
+                <button class="btn-delete">Excluir</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para Adicionar/Editar Fase -->
+    <div id="modalFase" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitulo">Adicionar Fase</h2>
+            </div>
+            <div class="form-content">
+                <form id="formFase">
+                    <div class="modal-fases-layout">
+                        <div class="modal-fases-left">
+                            <div class="form-group">
+                                <label for="nomeFase">Nome da fase</label>
+                                <input type="text" id="nomeFase" name="nomeFase" placeholder="Nome da fase" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="imagemMascote">Imagem do mascote (PNG)</label>
+                                <div class="image-upload-container">
+                                    <input type="file" id="imagemMascote" name="imagemMascote" accept="image/png" style="display: none;">
+                                    <div class="image-upload-box" id="imageUploadBox">
+                                        <img id="imagePreview" src="" alt="" style="display: none;">
+                                        <span class="material-symbols-outlined image-upload-icon">image</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-fases-right">
+                            <label class="activities-label">Adicione as atividades da fase:</label>
+                            <div class="activities-list" id="activitiesList">
+                                <div class="activity-row">
+                                    <input type="text" class="activity-input" placeholder="Insira a atividade">
+                                    <div class="activity-actions">
+                                        <button type="button" class="activity-btn-edit">
+                                            <span class="material-symbols-outlined">edit</span>
+                                        </button>
+                                        <button type="button" class="activity-btn-delete">
+                                            <span class="material-symbols-outlined">close</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="activity-row">
+                                    <input type="text" class="activity-input" placeholder="Insira a atividade">
+                                    <div class="activity-actions">
+                                        <button type="button" class="activity-btn-edit">
+                                            <span class="material-symbols-outlined">edit</span>
+                                        </button>
+                                        <button type="button" class="activity-btn-delete">
+                                            <span class="material-symbols-outlined">close</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="activity-row">
+                                    <input type="text" class="activity-input" placeholder="Insira a atividade">
+                                    <div class="activity-actions">
+                                        <button type="button" class="activity-btn-edit">
+                                            <span class="material-symbols-outlined">edit</span>
+                                        </button>
+                                        <button type="button" class="activity-btn-delete">
+                                            <span class="material-symbols-outlined">close</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="activity-row">
+                                    <input type="text" class="activity-input" placeholder="Insira a atividade">
+                                    <div class="activity-actions">
+                                        <button type="button" class="activity-btn-edit">
+                                            <span class="material-symbols-outlined">edit</span>
+                                        </button>
+                                        <button type="button" class="activity-btn-delete">
+                                            <span class="material-symbols-outlined">close</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="activity-row">
+                                    <input type="text" class="activity-input" placeholder="Insira a atividade">
+                                    <div class="activity-actions">
+                                        <button type="button" class="activity-btn-edit">
+                                            <span class="material-symbols-outlined">edit</span>
+                                        </button>
+                                        <button type="button" class="activity-btn-delete">
+                                            <span class="material-symbols-outlined">close</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" class="btn-add-activity" id="btnAddActivity">+ Adicionar</button>
+                        </div>
+                    </div>
+                    <div class="modal-actions">
+                        <button type="button" class="btn-cancel">Cancelar</button>
+                        <button type="submit" class="btn-save">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/Fases.js"></script>
+</body>
+
+</html>

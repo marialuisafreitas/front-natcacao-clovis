@@ -94,16 +94,14 @@ document.addEventListener('DOMContentLoaded', function () {
         toggle.addEventListener('click', function () {
             const targetId = this.getAttribute('data-target');
             const input = document.getElementById(targetId);
-            const img = this.querySelector('img');
+            const icon = this.querySelector('.password-icon');
 
             if (input.type === 'password') {
                 input.type = 'text';
-                img.src = '../img/view.png';
-                img.alt = 'olho aberto';
+                icon.textContent = 'visibility';
             } else {
                 input.type = 'password';
-                img.src = '../img/hidden.png';
-                img.alt = 'olho fechado';
+                icon.textContent = 'visibility_off';
             }
         });
     });
