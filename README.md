@@ -1,4 +1,4 @@
-"# Sistema de Natação Clóvis
+Sistema de Natação Clóvis
 
 Sistema de gerenciamento para escolas de natação que utilizam a Metodologia Clóvis.
 
