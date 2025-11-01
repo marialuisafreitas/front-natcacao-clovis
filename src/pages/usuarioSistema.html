@@ -32,16 +32,11 @@
                     placeholder="Buscar por usuários...">
             </div>
         </div>
-        <div class="table-row">
-            <div class="table-data">
-                <p class="table-row-title">Maria Clara Alves de Almeida</p>
-                <p class="table-badge">Administrador</p>
-            </div>
-            <div class="table-actions">
-                <button class="btn-edit"
-                    data-user='{"nome":"Maria Clara Alves de Almeida","email":"maria@email.com","nivel":"Administrador"}'>Editar</button>
-                <button class="btn-delete">Excluir</button>
-            </div>
+        <div id="usuariosContainer">
+            <!-- Lista de usuários será renderizada aqui -->
+        </div>
+        <div id="paginationContainer">
+            <!-- Controles de paginação serão renderizados aqui -->
         </div>
     </div>
 
@@ -99,6 +94,8 @@
         </div>
     </div>
 
+    <script src="../js/auth.js"></script>
+    <script src="../js/utils/pagination.js"></script>
     <script src="../js/usuarioSistema.js"></script>
 </body>
 

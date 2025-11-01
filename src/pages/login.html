@@ -9,22 +9,23 @@
 </head>
 
 <body>
-    <div id="login_form">
+    <form id="login_form" novalidate>
         <img src="../img/logoMetodologiaClovis.png" alt="Logo da Metodologia Clóvis">
         <h1>Bem-vindo!</h1>
         <p>Entre com os seus dados para acessar o sistema</p>
         <div id="loginInputs">
             <label for="email">Email</label>
-            <input id="email" type="email" placeholder="Email">
+            <input id="email" name="email" type="email" placeholder="Email" required>
             <label for="password">Senha</label>
-            <input id="password" type="password" placeholder="Senha">
+            <input id="password" name="password" type="password" placeholder="Senha" required>
         </div>
         <button type="submit">ENTRAR</button>
-    </div>
+    </form>
     <div id="login-image">
         <img src="../img/fundoAgua.png" alt="Fundo de piscina na cor azul claro">
         <img src="../img/macostes.png" alt="Macotes da metodologia Clóvis, Golfinho, Foca, Estrela do Mar e Peixe Dourado">
     </div>
+    <script src="../js/login.js"></script>
 </body>
 
 </html>

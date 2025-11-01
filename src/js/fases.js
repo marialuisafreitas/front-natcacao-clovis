@@ -63,6 +63,101 @@ function excluirFase() {
     }
 }
 
+// --- Paginação e integração (nova) ---
+const ITEMS_PER_PAGE_FASES = 5;
+let currentFasesPage = 1;
+let allFases = [];
+
+async function fetchFases(searchTerm = '') {
+    try {
+        // TODO: substituir pela chamada real ao backend Java
+        const mockFases = [
+            { id: 1, nome: 'Golfinho Baby' },
+            { id: 2, nome: 'Golfinho Infantil' },
+            { id: 3, nome: 'Foca Iniciante' },
+            { id: 4, nome: 'Estrela do Mar' },
+            { id: 5, nome: 'Peixe Dourado' },
+            { id: 6, nome: 'Marinheiro' }
+        ];
+
+        if (searchTerm) {
+            return mockFases.filter(f => f.nome.toLowerCase().includes(searchTerm.toLowerCase()));
+        }
+
+        return mockFases;
+    } catch (err) {
+        console.error('Erro ao buscar fases:', err);
+        return [];
+    }
+}
+
+function renderFases(fases) {
+    const container = document.querySelector('.main-content');
+    const fasesHTML = fases.map(fase => `
+        <div class="table-row" data-id="${fase.id}">
+            <div class="table-data">
+                <p class="table-row-title">${fase.nome}</p>
+            </div>
+            <div class="table-actions">
+                <button class="btn-edit" data-user='${JSON.stringify(fase)}'>Editar</button>
+                <button class="btn-delete">Excluir</button>
+            </div>
+        </div>
+    `).join('');
+
+    const existingContent = container.querySelector('.table-content');
+    if (existingContent) {
+        existingContent.innerHTML = fasesHTML;
+    } else {
+        container.querySelector('.page-header').insertAdjacentHTML('afterend', `<div class="table-content">${fasesHTML}</div>`);
+    }
+
+    // Anexa listeners aos botões recém-criados
+    attachEventListenersFases();
+}
+
+function attachEventListenersFases() {
+    document.querySelectorAll('.table-actions .btn-edit').forEach(btn => {
+        btn.removeEventListener('click', null);
+        btn.addEventListener('click', function () {
+            let faseData = {};
+            if (this.getAttribute('data-user')) {
+                try { faseData = JSON.parse(this.getAttribute('data-user')); } catch (e) { }
+            }
+            if (!faseData.nome) {
+                const tableRow = this.closest('.table-row');
+                faseData = { id: parseInt(tableRow.dataset.id), nome: tableRow.querySelector('.table-row-title').textContent };
+            }
+            abrirModalEditar(faseData);
+        });
+    });
+
+    document.querySelectorAll('.table-actions .btn-delete').forEach(btn => {
+        btn.removeEventListener('click', null);
+        btn.addEventListener('click', (e) => {
+            const id = parseInt(e.target.closest('.table-row').dataset.id);
+            // TODO: chamar API para excluir a fase
+            if (confirm('Tem certeza que deseja excluir esta fase?')) {
+                // Simula exclusão local
+                allFases = allFases.filter(f => f.id !== id);
+                renderFasesWithPagination(allFases);
+                alert('Fase excluída com sucesso!');
+            }
+        });
+    });
+}
+
+async function renderFasesWithPagination(fases) {
+    allFases = fases;
+    const paginationData = createPagination(fases.length, ITEMS_PER_PAGE_FASES, currentFasesPage);
+    const paginated = paginateItems(fases, ITEMS_PER_PAGE_FASES, currentFasesPage);
+    renderFases(paginated);
+    renderPaginationControls(paginationData, 'paginationContainer', (page) => {
+        currentFasesPage = page;
+        renderFasesWithPagination(allFases);
+    });
+}
+
 // Função para adicionar nova linha de atividade
 function adicionarLinhaAtividade() {
     const activitiesList = document.getElementById('activitiesList');
@@ -83,10 +178,36 @@ function adicionarLinhaAtividade() {
 }
 
 // Event listeners
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', async function () {
+    // Carregar fases iniciais com paginação
+    try {
+        const fases = await fetchFases();
+        renderFasesWithPagination(fases);
+    } catch (err) {
+        console.error('Erro ao carregar fases iniciais:', err);
+    }
+
     // Botão adicionar novo
     if (addBtn) {
         addBtn.addEventListener('click', abrirModalAdicionar);
+    }
+
+    // Buscar fases com debounce
+    const searchInput = document.getElementById('pesquisarFases');
+    if (searchInput) {
+        let timeoutId;
+        searchInput.addEventListener('input', (e) => {
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(async () => {
+                try {
+                    currentFasesPage = 1;
+                    const results = await fetchFases(e.target.value);
+                    renderFasesWithPagination(results);
+                } catch (err) {
+                    console.error('Erro na busca de fases:', err);
+                }
+            }, 300);
+        });
     }
 
     // Botões editar

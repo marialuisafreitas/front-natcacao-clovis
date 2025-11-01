@@ -32,14 +32,11 @@
                     placeholder="Buscar por fase...">
             </div>
         </div>
-        <div class="table-row">
-            <div class="table-data">
-                <p class="table-row-title">Golfinho Baby</p>
-            </div>
-            <div class="table-actions">
-                <button class="btn-edit" data-user='{"nome":"Fase Portal","cep":"12000000"}'>Editar</button>
-                <button class="btn-delete">Excluir</button>
-            </div>
+        <div id="fasesContainer">
+            <!-- Lista de fases será renderizada aqui -->
+        </div>
+        <div id="paginationContainer">
+            <!-- Controles de paginação serão renderizados aqui -->
         </div>
     </div>
 
@@ -139,7 +136,9 @@
         </div>
     </div>
 
-    <script src="../js/Fases.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/utils/pagination.js"></script>
+    <script src="../js/fases.js"></script>
 </body>
 
 </html>

@@ -48,8 +48,101 @@ function fecharModal() {
     }, 300);
 }
 
+// --- Paginação e integração (nova) ---
+const ITEMS_PER_PAGE_UNIDADES = 5;
+let currentUnidadesPage = 1;
+let allUnidades = [];
+
+async function fetchUnidades(searchTerm = '') {
+    try {
+        // TODO: substituir por chamada real ao backend Java
+        const mockUnidades = [
+            { id: 1, nome: 'Unidade Portal', cep: '12000-000' },
+            { id: 2, nome: 'Unidade Selles', cep: '12111-111' },
+            { id: 3, nome: 'Unidade Centro', cep: '12222-222' }
+        ];
+
+        if (searchTerm) {
+            return mockUnidades.filter(u => u.nome.toLowerCase().includes(searchTerm.toLowerCase()));
+        }
+
+        return mockUnidades;
+    } catch (err) {
+        console.error('Erro ao buscar unidades:', err);
+        return [];
+    }
+}
+
+function renderUnidades(unidades) {
+    const container = document.querySelector('.main-content');
+    const html = unidades.map(u => `
+        <div class="table-row" data-id="${u.id}">
+            <div class="table-data">
+                <p class="table-row-title">${u.nome}</p>
+            </div>
+            <div class="table-actions">
+                <button class="btn-edit" data-user='${JSON.stringify(u)}'>Editar</button>
+                <button class="btn-delete">Excluir</button>
+            </div>
+        </div>
+    `).join('');
+
+    const existing = container.querySelector('.table-content');
+    if (existing) existing.innerHTML = html;
+    else container.querySelector('.page-header').insertAdjacentHTML('afterend', `<div class="table-content">${html}</div>`);
+
+    attachEventListenersUnidades();
+}
+
+function attachEventListenersUnidades() {
+    document.querySelectorAll('.table-actions .btn-edit').forEach(btn => {
+        btn.removeEventListener('click', null);
+        btn.addEventListener('click', function () {
+            const data = this.getAttribute('data-user');
+            if (data) {
+                abrirModalEditar(JSON.parse(data));
+            } else {
+                const row = this.closest('.table-row');
+                abrirModalEditar({ id: parseInt(row.dataset.id), nome: row.querySelector('.table-row-title').textContent });
+            }
+        });
+    });
+
+    document.querySelectorAll('.table-actions .btn-delete').forEach(btn => {
+        btn.removeEventListener('click', null);
+        btn.addEventListener('click', async (e) => {
+            const id = parseInt(e.target.closest('.table-row').dataset.id);
+            if (confirm('Tem certeza que deseja excluir esta unidade?')) {
+                // TODO: chamada real para backend
+                allUnidades = allUnidades.filter(u => u.id !== id);
+                renderUnidadesWithPagination(allUnidades);
+                alert('Unidade excluída com sucesso!');
+            }
+        });
+    });
+}
+
+async function renderUnidadesWithPagination(unidades) {
+    allUnidades = unidades;
+    const paginationData = createPagination(unidades.length, ITEMS_PER_PAGE_UNIDADES, currentUnidadesPage);
+    const paginated = paginateItems(unidades, ITEMS_PER_PAGE_UNIDADES, currentUnidadesPage);
+    renderUnidades(paginated);
+    renderPaginationControls(paginationData, 'paginationContainer', (page) => {
+        currentUnidadesPage = page;
+        renderUnidadesWithPagination(allUnidades);
+    });
+}
+
 // Event listeners
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', async function () {
+    // Carregar unidades iniciais com paginação
+    try {
+        const unidades = await fetchUnidades();
+        renderUnidadesWithPagination(unidades);
+    } catch (err) {
+        console.error('Erro ao carregar unidades iniciais:', err);
+    }
+
     // Botão adicionar novo
     if (addBtn) {
         addBtn.addEventListener('click', abrirModalAdicionar);
@@ -66,6 +159,24 @@ document.addEventListener('DOMContentLoaded', function () {
     // Fechar modal
     if (cancelBtn) {
         cancelBtn.addEventListener('click', fecharModal);
+    }
+
+    // Buscar unidades com debounce
+    const searchInput = document.getElementById('pesquisarUnidades');
+    if (searchInput) {
+        let timeoutId;
+        searchInput.addEventListener('input', (e) => {
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(async () => {
+                try {
+                    currentUnidadesPage = 1;
+                    const results = await fetchUnidades(e.target.value);
+                    renderUnidadesWithPagination(results);
+                } catch (err) {
+                    console.error('Erro na busca de unidades:', err);
+                }
+            }, 300);
+        });
     }
 
     // Fechar modal clicando fora dele
